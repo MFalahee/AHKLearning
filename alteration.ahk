@@ -1,25 +1,31 @@
 ﻿#IfWinActive Path of Exile
 #SingleInstance, force
+#ClipboardTimeout, 2000
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 #Warn  ; Enable warnings to assist with detecting common errors.
 
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-CoordMode, Mouse, Client
-SetWorkingDir %A_ScriptDir%/ahk
-; Ensures a consistent starting directory.
-; loop to find affix on item, stop if one we are looking for, otherwise craft, repeat 
+SetTitleMatchMode, 1 ; 1=exact, 2=contains, 3=regex
+CoordMode, Mouse, Client ; Mouse coordinates are based on the active window's client area.
+SetWorkingDir %A_ScriptDir% ; 
+Thread, Interrupt, 0  ; Interrupts the script if it takes longer than 0 seconds to run.
+
+; script functions
+; F1: craft items with orbs of alteration automatically in path of exile using AHK looking for a specific affix
+; F2: looks up Mouse position and pixelColor under the mouse
+
 
 F2::
 ;this function will check the color of pixels nearby the cursor to determine if the cursor is over a currency
 ;if it is, it will return the name of the currency, otherwise it will return "none"
-
 Gui, New,, CurrencyGUI
 Gui +AlwaysOnTop +MinSize200x200
-Gui, Add, Text, vGuiHead w200, Is It Blue?
-Gui, Add, Text, vMousePos w15, Mouse Position: NONE
-Gui, Add, Text, vMouseColor w15, Mouse Color: NONE
-Gui, Add, Text, vPosUp w15, Currency Color: NONE
+Gui, Add, Text, x+10 vGuiHead w200, Is It Blue?
+Gui, Add, Text, x+10 vMousePos w15, Mouse Position: NONE
+Gui, Add, Text, x+10 vMouseColor w15, Mouse Color: NONE
+Gui, Add, Text, x+10 vPosUp w15, Currency Color: NONE
 Gui, Show, x6000 y500
+
 
 Loop,
 	{
@@ -31,214 +37,223 @@ Loop,
 		GuiControl, Text, PosUp,%_currencyColor%
 		Sleep, 100
 	}
-; DA721F === alteration PixelColor
 
+Return
 F1::
+	global logging:=1
+	global affix:="Life"
+	global craft_number := 0
+	
 	ClearLog()
-	logging := 1
-	affix := "life"
-	timer := 150
-	craft_number := 0
-	setup := 1
-	_Check := True
+
+	setup := 1 
+	LoopSwitch := 1
 	_ItemInfo := ""
+	_CurrentItem := ""
+	_PrevItem := ""
+	_currency_clicked := 0
 	Gui, New,,CraftingGUI
 	Gui +AlwaysOnTop +MinSize200x200
 	Gui, Add, Text, vGuiHead w200, Main Script
 	Gui, Add, Text, vActiveWindow w200, Current Window: NONE
-	Gui, Show, x6000 y500 w300 h300
+	Gui, Show, x6000 y500 w300 h300 NA
 	GuiControl, Text, GuiHead, Loading parameters...
-	Random, currencyX, 212, 245
-	Random, currencyY, 510, 550
+	;Random, currencyX, 212, 245
+	;Random, currencyY, 510, 550
 	Random, craftingX, 639, 659
 	Random, craftingY, 880, 900
 	GuiControl, Text, GuiHead, Crafting
 	Gui, Add, Text, vAffix w200, Looking for: %affix%
 	Gui, Add, Text, vStatus w200, grabbing alterations
-	Gui, Add, Text, vDosStatus w200, DOS STATUS: NONE
+	Gui, Add, Text, vCrafting w200, Crafting: %craft_number% attempts
 
 
-	if WinExist("Path of Exile") {
-		WinActivate
-		WinGetTitle, currentWindowTitle
-		GuiControl, Text, ActiveWindow, Current Window: %currentWindowTitle%
-	} else {
-		MsgBox, 16,, "Path of Exile is not running!"
-		ExitApp
-	}
-	if logging	{
+	; +1 spell skill gems prefix == Magister's || Exalter's ?? +1 level of all skill gems
+
+	if logging {
+		WriteLog("Logging Enabled.")
 		WriteLog("Starting Crafting Session")
 		WriteLog("Looking for: " affix)
-		WriteLog("Current Window: " currentWindowTitle)
-		WriteLog("copying item under cursor @ crafting position")
 	}
-	_ItemInfo := CreateIteminfoFromClipboard(ItemToClipboard())
-	WriteLog(_ItemInfo.Length)
-	GrabCurrency(currencyX, currencyY, logging)
-	Sleep, 1000
-	While (_Check != 0) {
-		If logging 
-			WriteLog("Crafting Loop")
-		If setup {
-			GuiControl, Text, Status, STARTING CRAFT SESSION...
-			MouseMove, %craftingX%, %craftingY%
-			Send {Shift down}
-			Send {Ctrl down}
-			Sleep, 3000
-			setup := 0
-		} else {
-			GuiControl, Text, Status, CRAFTING LOOP...
-			If (_ItemInfo.Has(1))
+
+	While (LoopSwitch == 1) {
+		IfWinActive, Path of Exile
+		 {	
+			if (_currency_clicked == 0) 
+			{
+				GuiControl, Text, ActiveWindow, Path of Exile
+				GuiControl, Text, Status, Grabbing currency
+				if (GrabCurrency(RandomVal(212, 245), RandomVal(510,550)))
+					_currency_clicked := 1
+				Sleep, 100
+				MouseMove, craftingX, craftingY
+				Sleep, 100
+				Send, {Shift Down}
+			}
+			else {
+			_CurrentItem := CreateIteminfoFromClipboard(ItemToClipboard())
+
+		
+			Sleep, RandomVal(200, 300)
+			if logging
+				WriteLog("MAIN: Crafting")
+			Sleep, 500
+			if (_CurrentItem != "" && _PrevItem != _CurrentItem)
+			{
+				;current item is under cursor, copy it into the clipboard
+				_item_iterator := 1
+				_item_line := _CurrentItem.Pop()
+				if logging
 				{
-					If logging
-						WriteLog("ItemInfo: " _ItemInfo)
-					try {
-						GuiControl,Text, Status, Checking Affixes...
-						WriteLog("Checking Affixes...")
-						
-						result := FindAffix(_ItemInfo, affix, logging)
-					}
-					catch e{
-						WriteLog("Exception thrown!")
-							MsgBox, 16,, % "Exception thrown!`n`nwhat: " e.what "`nfile: " e.file
-					. "`nline: " e.line "`nmessage: " e.message "`nextra: " e.extra
-						}
+					WriteLog("MAIN: Item Found.")
+					WriteLog("MAIN: ITERATING THROUGH ITEM LINES")
 				}
-		; 	res := CraftItem()
-		; 	if (res) {
-		; 		Random, tzz, 500, 2000
-		; 		Sleep, tzz
-		; 		craft_number++
-		; 	}
-		; 	GuiControl, Text, Status, Craft Attempts: %craft_number%
-		; 	_ItemInfo := CreateIteminfoFromClipboard(ItemToClipboard())
-		_Check := 0
-		}
-}
-
-Return
-
+				While(_item_iterator)
+				{
+							if logging 
+							{
+								if (_item_line != "")
+									WriteLog("Item: " _item_line)
+							}
+							_item_line := _CurrentItem.Pop()
+							if (_Item_line != "") 
+							{
+								if (logging)
+								{
+									WriteLog("MAIN: Item has affix, checking if it's the one we want.")
+								}
+								if (InStr(_item_line, affix, False))
+								{
+									if (logging)
+									{
+										WriteLog("MAIN: Item has the affix we want. We are Done!")
+									}
+									;found affix, exit everything
+									LoopSwitch := 0
+									ExitApp
+								} 
+								else 
+								{
+									continue
+								}
+							} 
+							else 
+							{
+								WriteLog("MAIN: Item doesn't have the affix, continuing.")
+								_item_iterator := 0
+							}
+				}
+				Sleep, 100
+				if logging {
+					WriteLog("MAIN: Crafting")
+				}
+				_currency_clicked := CraftItem()
+				craft_number++
+				GuiControl, Text, Crafting, Crafting: %craft_number% attempts
+				_PrevItem := _CurrentItem
+			}
+			else 
+			{
+				if logging
+					WriteLog("Item not found, looping again.")
+				continue
+			}
+			}
+		} 
+	}
+	
 
 ItemToClipboard()
 {
-	WriteLog("ItemToClipboard: STARTING")
-	Clipboard := ""
-	output := "failed"
-	SendMode, Input
-	Send, +^{c}
-	ClipWait
-	if (Clipboard != "")
-		output := ClipboardAll
-	If(ErrorLevel)
-		{
-			WriteLog("ItemToClipboard: ErrorLevel is true, returning 0")
-			return 0
-		}
-		else
-		{
-			WriteLog("ItemToClipboard: Returning successfully")
-			WriteLog(%output%)
-			return output
-		}
+	; WriteLog("ItemToClipboard: STARTING")
+	clipboard := ""
+	Send {Ctrl down}{c down}{Ctrl up}{c up}
+	ClipWait, 0.5
+	if (clipboard != "") {
+		; if logging
+		; 	WriteLog("ItemToClipboard: Clipboard is not empty")
+		output := clipboard
+		return output
+	} else {
+		if logging
+			WriteLog("ItemToClipboard: Clipboard is empty!")
+		output := ""
+		return output
+	}
 }
 			
-CreateIteminfoFromClipboard(Clipboardcontent)
+CreateIteminfoFromClipboard(content)
 {
-	WriteLog("CreateItemInfofromClipboard: STARTING")
+	; WriteLog("CreateItemInfofromClipboard: STARTING")
 	_Info := []
 	_name_line := 0
 	_affix_line := 0
-	WriteLog(Clipboardcontent != "")
-	If (Clipboardcontent.Has(1)) 	
-	{	
-		WriteLog("Inside Clipboard Loop.")
-		Loop, Parse, Clipboardcontent, `n, `r
-			if (_name_line) {
-				_Info.Insert(A_LoopField)
+	if (content != "") 
+	{
+		if logging
+				; WriteLog("CreateIteminfoFromClipboard: Starting Loop.")
+		Loop, Parse, content, `n, `r
+		{
+			if (InStr(A_LoopField, "---"))
+				continue
+			else 
+			{
+				if (_name_line == 1) {
+				if logging
+					WriteLog("CreateIteminfoFromClipboard: Push:" A_LoopField)
+				_Info.Push(A_LoopField)
+
 				_name_line := 0
 			}
-			if (_affix_line) {
-				_Info.Insert(A_LoopField)
+			if (_affix_line == 1) 
+			{
+				if logging
+					WriteLog("CreateIteminfoFromClipboard: Push: " A_LoopField)
+				if (A_LoopField != "")
+					_Info.Push(A_LoopField)
 			}
-			If (InStr(A_LoopField, "Rarity: ")) {
-				_name_line := 1
+			If (InStr(A_LoopField, "Rarity: "))
+			;InStr(Haystack, Needle [, CaseSensitive?, StartingPos])
+			{
+				; if logging
+				; 	WriteLog("CreateIteminfoFromClipboard: Found Rarity")
+				if (A_LoopField != "")
+					_name_line := 1
 			}
 			If (InStr(A_LoopField, "Item Level"))
+			{
+				; if logging
+				; 	WriteLog("CreateIteminfoFromClipboard: Found Item Level")
 				_affix_line := 1
-	}
-	return _Info
-}
-; Item Class: Amulets
-; Rarity: Magic
-; Aqua Onyx Amulet
-; --------
-; Quality (Attribute Modifiers): +20% (augmented)
-; --------
-; Requirements:
-; Level: 28
-; --------
-; Item Level: 84
-; --------
-; +19 to all Attributes (implicit)
-; --------
-; +41 to maximum Mana
-
-FindAffix(item, affix, logs)
-{
-	bool := False
-	if logs
-		WriteLog("FindAffix: Looping through item array.")
-	Loop, item.MaxIndex()
-	{
-		If (A_Index < 5)
-			continue
-		else {
-			Sleep, 20
-			Line := item[A_Index]
-			If InStr(Line, affix) {
-				if logs
-					WriteLog("FindAffix: Found affix: " affix)
-					WriteLog(item[A_Index])
-				bool := True
-				break
-			} else {
-				if logs
-					WriteLog("FindAffix: Did not find affix: " affix)
-					WriteLog(item[A_Index])
-				continue
 			}
 		}
-		if logs {
-			WriteLog("FindAffix: A_Index: " %A_Index%)
-			WriteLog("FindAffix: Item: " %item%[A_Index])
-		}
-		return bool
 	}
+	return _Info
+} else {
+	return ""
+}
 }
 
-GrabCurrency(curX, curY, logs)
+
+GrabCurrency(curX, curY)
 {	
 	GuiControl, Text, GuiHead, Grabbing alterations.
-	if logs
-		WriteLog("GrabCurrency: STARTING")
 	;Alterations -- X212-245 Y510-550
 	;this function moves the mouse to the coordinates provided, and right clicks to "grab" the currency
-	;potentially update to check the cursor for the currency icon as a "successful grab" check
 	IfWinActive Path of Exile ahk_class POEWindowClass
 	{
-		MouseMove, curX, curY
-		Sleep, 200
+		MouseMove, %curX%, %curY%
+		Sleep, 100
 		Send, {Click %curX% %curY% Right}
-		Sleep, RandomVal(100,200,logs)
-		WriteLog("Currency Click")
-
+		Sleep, RandomVal(100,200)
+		; WriteLog("Currency Click")
 		if (ErrorLevel) {
-			if logs
+			if logging
 				WriteLog("GrabCurrency: ErrorLevel is true, returning 0")
 			return 0
 		}
 		else {
-			if logs
+			if logging
 				WriteLog("GrabCurrency: Returning successfully")
 			return 1
 		}
@@ -252,28 +267,29 @@ CraftItem() {
 	GuiControl, Text, GuiHead, Beep Boop Bop: we click until we stop!
 	IfWinActive Path of Exile ahk_class POEWindowClass
 	{	
-		WriteLog("Actually crafting")
 		MouseGetPos, pX, pY
 		PixelGetColor, _currencyCheck, pX+10, pY+10
-		if (_currencyCheck != "0xDA721F")
+		; DA721F === orb of alteration
+		if (_currencyCheck == "0xDA721F")
 		{
-			WriteLog("Currency not found")
-			return 0
-		}
-		else {
-			WriteLog("Currency click")
 			Send {Click}
-			Sleep, 20
+			Sleep, RandomVal(50, 100)
+
+			if logging
+				WriteLog("CraftItem: Clicked")
 			return 1
 		}
+		else {
+			if logging
+				WriteLog("Currency not found.")
+			return 0
+		}
 	}
-
+	return 0
 }
 
-RandomVal(min, max, logs) {
+RandomVal(min, max) {
 	Random, randy, %min%, %max%
-	if logs
-		WriteLog("RandomVal: Returning " randy)
 	return randy
 }
 
@@ -284,6 +300,7 @@ WriteLog(text) {
 ClearLog() {
 	FileDelete, craftinglogfile.txt
 }
+
 GuiClose:
 GuiEscape:
 Send {Shift up}

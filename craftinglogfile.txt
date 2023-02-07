@@ -1,0 +1,86 @@
+20230207224436: Logging Enabled.
+20230207224436: Starting Crafting Session
+20230207224436: Looking for: Life
+20230207224437: GrabCurrency: Returning successfully
+20230207224437: CreateIteminfoFromClipboard: Push:Onyx Amulet of the Sage
+20230207224437: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230207224437: CreateIteminfoFromClipboard: Push: +43 to Intelligence
+20230207224437: CreateIteminfoFromClipboard: Push: 
+20230207224437: MAIN: Crafting
+20230207224438: MAIN: Item Found.
+20230207224438: MAIN: ITERATING THROUGH ITEM LINES
+20230207224438: Item: +43 to Intelligence
+20230207224438: MAIN: Item has affix, checking if it's the one we want.
+20230207224438: Item: +19 to all Attributes (implicit)
+20230207224438: MAIN: Item has affix, checking if it's the one we want.
+20230207224438: Item: Onyx Amulet of the Sage
+20230207224438: MAIN: Item doesn't have the affix, continuing.
+20230207224438: MAIN: Crafting
+20230207224438: CraftItem: Clicked
+20230207224438: CreateIteminfoFromClipboard: Push:Onyx Amulet of the Sage
+20230207224438: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230207224438: CreateIteminfoFromClipboard: Push: +43 to Intelligence
+20230207224438: CreateIteminfoFromClipboard: Push: 
+20230207224438: MAIN: Crafting
+20230207224439: MAIN: Item Found.
+20230207224439: MAIN: ITERATING THROUGH ITEM LINES
+20230207224439: Item: +43 to Intelligence
+20230207224439: MAIN: Item has affix, checking if it's the one we want.
+20230207224439: Item: +19 to all Attributes (implicit)
+20230207224439: MAIN: Item has affix, checking if it's the one we want.
+20230207224439: Item: Onyx Amulet of the Sage
+20230207224439: MAIN: Item doesn't have the affix, continuing.
+20230207224439: MAIN: Crafting
+20230207224439: CraftItem: Clicked
+20230207224439: CreateIteminfoFromClipboard: Push:Lobstered Onyx Amulet
+20230207224439: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230207224439: CreateIteminfoFromClipboard: Push: 16% increased Armour
+20230207224439: CreateIteminfoFromClipboard: Push: 
+20230207224440: MAIN: Crafting
+20230207224440: MAIN: Item Found.
+20230207224440: MAIN: ITERATING THROUGH ITEM LINES
+20230207224440: Item: 16% increased Armour
+20230207224440: MAIN: Item has affix, checking if it's the one we want.
+20230207224440: Item: +19 to all Attributes (implicit)
+20230207224440: MAIN: Item has affix, checking if it's the one we want.
+20230207224440: Item: Lobstered Onyx Amulet
+20230207224440: MAIN: Item doesn't have the affix, continuing.
+20230207224440: MAIN: Crafting
+20230207224440: CraftItem: Clicked
+20230207224441: ItemToClipboard: Clipboard is empty!
+20230207224441: MAIN: Crafting
+20230207224442: Item not found, looping again.
+20230207224442: CreateIteminfoFromClipboard: Push:Virile Onyx Amulet
+20230207224442: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230207224442: CreateIteminfoFromClipboard: Push: +71 to maximum Life
+20230207224442: CreateIteminfoFromClipboard: Push: 
+20230207224442: MAIN: Crafting
+20230207224442: MAIN: Item Found.
+20230207224442: MAIN: ITERATING THROUGH ITEM LINES
+20230207224442: Item: +71 to maximum Life
+20230207224442: MAIN: Item has affix, checking if it's the one we want.
+20230207224442: Item: +19 to all Attributes (implicit)
+20230207224442: MAIN: Item has affix, checking if it's the one we want.
+20230207224442: Item: Virile Onyx Amulet
+20230207224442: MAIN: Item doesn't have the affix, continuing.
+20230207224443: MAIN: Crafting
+20230207224443: CraftItem: Clicked
+20230207224443: CreateIteminfoFromClipboard: Push:Onyx Amulet of the Furnace
+20230207224443: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230207224443: CreateIteminfoFromClipboard: Push: +35% to Fire Resistance
+20230207224443: CreateIteminfoFromClipboard: Push: 
+20230207224443: MAIN: Crafting
+20230207224444: MAIN: Item Found.
+20230207224444: MAIN: ITERATING THROUGH ITEM LINES
+20230207224444: Item: +35% to Fire Resistance
+20230207224444: MAIN: Item has affix, checking if it's the one we want.
+20230207224444: Item: +19 to all Attributes (implicit)
+20230207224444: MAIN: Item has affix, checking if it's the one we want.
+20230207224444: Item: Onyx Amulet of the Furnace
+20230207224444: MAIN: Item doesn't have the affix, continuing.
+20230207224444: MAIN: Crafting
+20230207224444: CraftItem: Clicked
+20230207224444: ItemToClipboard: Clipboard is empty!
+20230207224445: MAIN: Crafting
+20230207224445: Item not found, looping again.
+20230207224446: ItemToClipboard: Clipboard is empty!
