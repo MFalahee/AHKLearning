@@ -1,86 +1,134 @@
-20230207224436: Logging Enabled.
-20230207224436: Starting Crafting Session
-20230207224436: Looking for: Life
-20230207224437: GrabCurrency: Returning successfully
-20230207224437: CreateIteminfoFromClipboard: Push:Onyx Amulet of the Sage
-20230207224437: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
-20230207224437: CreateIteminfoFromClipboard: Push: +43 to Intelligence
-20230207224437: CreateIteminfoFromClipboard: Push: 
-20230207224437: MAIN: Crafting
-20230207224438: MAIN: Item Found.
-20230207224438: MAIN: ITERATING THROUGH ITEM LINES
-20230207224438: Item: +43 to Intelligence
-20230207224438: MAIN: Item has affix, checking if it's the one we want.
-20230207224438: Item: +19 to all Attributes (implicit)
-20230207224438: MAIN: Item has affix, checking if it's the one we want.
-20230207224438: Item: Onyx Amulet of the Sage
-20230207224438: MAIN: Item doesn't have the affix, continuing.
-20230207224438: MAIN: Crafting
-20230207224438: CraftItem: Clicked
-20230207224438: CreateIteminfoFromClipboard: Push:Onyx Amulet of the Sage
-20230207224438: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
-20230207224438: CreateIteminfoFromClipboard: Push: +43 to Intelligence
-20230207224438: CreateIteminfoFromClipboard: Push: 
-20230207224438: MAIN: Crafting
-20230207224439: MAIN: Item Found.
-20230207224439: MAIN: ITERATING THROUGH ITEM LINES
-20230207224439: Item: +43 to Intelligence
-20230207224439: MAIN: Item has affix, checking if it's the one we want.
-20230207224439: Item: +19 to all Attributes (implicit)
-20230207224439: MAIN: Item has affix, checking if it's the one we want.
-20230207224439: Item: Onyx Amulet of the Sage
-20230207224439: MAIN: Item doesn't have the affix, continuing.
-20230207224439: MAIN: Crafting
-20230207224439: CraftItem: Clicked
-20230207224439: CreateIteminfoFromClipboard: Push:Lobstered Onyx Amulet
-20230207224439: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
-20230207224439: CreateIteminfoFromClipboard: Push: 16% increased Armour
-20230207224439: CreateIteminfoFromClipboard: Push: 
-20230207224440: MAIN: Crafting
-20230207224440: MAIN: Item Found.
-20230207224440: MAIN: ITERATING THROUGH ITEM LINES
-20230207224440: Item: 16% increased Armour
-20230207224440: MAIN: Item has affix, checking if it's the one we want.
-20230207224440: Item: +19 to all Attributes (implicit)
-20230207224440: MAIN: Item has affix, checking if it's the one we want.
-20230207224440: Item: Lobstered Onyx Amulet
-20230207224440: MAIN: Item doesn't have the affix, continuing.
-20230207224440: MAIN: Crafting
-20230207224440: CraftItem: Clicked
-20230207224441: ItemToClipboard: Clipboard is empty!
-20230207224441: MAIN: Crafting
-20230207224442: Item not found, looping again.
-20230207224442: CreateIteminfoFromClipboard: Push:Virile Onyx Amulet
-20230207224442: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
-20230207224442: CreateIteminfoFromClipboard: Push: +71 to maximum Life
-20230207224442: CreateIteminfoFromClipboard: Push: 
-20230207224442: MAIN: Crafting
-20230207224442: MAIN: Item Found.
-20230207224442: MAIN: ITERATING THROUGH ITEM LINES
-20230207224442: Item: +71 to maximum Life
-20230207224442: MAIN: Item has affix, checking if it's the one we want.
-20230207224442: Item: +19 to all Attributes (implicit)
-20230207224442: MAIN: Item has affix, checking if it's the one we want.
-20230207224442: Item: Virile Onyx Amulet
-20230207224442: MAIN: Item doesn't have the affix, continuing.
-20230207224443: MAIN: Crafting
-20230207224443: CraftItem: Clicked
-20230207224443: CreateIteminfoFromClipboard: Push:Onyx Amulet of the Furnace
-20230207224443: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
-20230207224443: CreateIteminfoFromClipboard: Push: +35% to Fire Resistance
-20230207224443: CreateIteminfoFromClipboard: Push: 
-20230207224443: MAIN: Crafting
-20230207224444: MAIN: Item Found.
-20230207224444: MAIN: ITERATING THROUGH ITEM LINES
-20230207224444: Item: +35% to Fire Resistance
-20230207224444: MAIN: Item has affix, checking if it's the one we want.
-20230207224444: Item: +19 to all Attributes (implicit)
-20230207224444: MAIN: Item has affix, checking if it's the one we want.
-20230207224444: Item: Onyx Amulet of the Furnace
-20230207224444: MAIN: Item doesn't have the affix, continuing.
-20230207224444: MAIN: Crafting
-20230207224444: CraftItem: Clicked
-20230207224444: ItemToClipboard: Clipboard is empty!
-20230207224445: MAIN: Crafting
-20230207224445: Item not found, looping again.
-20230207224446: ItemToClipboard: Clipboard is empty!
+20230208011832: Logging Enabled.
+20230208011832: Starting Crafting Session
+20230208011832: Looking for: Life
+20230208011833: GrabCurrency: Returning successfully
+20230208011833: CreateIteminfoFromClipboard: Push:Onyx Amulet of Destruction
+20230208011833: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230208011833: CreateIteminfoFromClipboard: Push: +38% to Global Critical Strike Multiplier
+20230208011833: CreateIteminfoFromClipboard: Push: 
+20230208011833: MAIN: Crafting
+20230208011834: MAIN: Item Found.
+20230208011834: MAIN: ITERATING THROUGH ITEM LINES
+20230208011834: CraftItem: Clicked
+20230208011834: CreateIteminfoFromClipboard: Push:Onyx Amulet of the Drake
+20230208011834: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230208011834: CreateIteminfoFromClipboard: Push: +22% to Fire Resistance
+20230208011834: CreateIteminfoFromClipboard: Push: 
+20230208011834: MAIN: Crafting
+20230208011835: MAIN: Item Found.
+20230208011835: MAIN: ITERATING THROUGH ITEM LINES
+20230208011835: CraftItem: Clicked
+20230208011835: CreateIteminfoFromClipboard: Push:Onyx Amulet of the Seal
+20230208011835: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230208011835: CreateIteminfoFromClipboard: Push: +15% to Cold Resistance
+20230208011835: CreateIteminfoFromClipboard: Push: 
+20230208011835: MAIN: Crafting
+20230208011836: MAIN: Item Found.
+20230208011836: MAIN: ITERATING THROUGH ITEM LINES
+20230208011836: CraftItem: Clicked
+20230208011836: CreateIteminfoFromClipboard: Push:Magpie's Onyx Amulet of Bliss
+20230208011836: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230208011836: CreateIteminfoFromClipboard: Push: 42% increased Mana Regeneration Rate
+20230208011836: CreateIteminfoFromClipboard: Push: 10% increased Rarity of Items found
+20230208011836: CreateIteminfoFromClipboard: Push: 
+20230208011836: MAIN: Crafting
+20230208011837: MAIN: Item Found.
+20230208011837: MAIN: ITERATING THROUGH ITEM LINES
+20230208011837: CraftItem: Clicked
+20230208011837: CreateIteminfoFromClipboard: Push:Onyx Amulet of Steadiness
+20230208011837: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230208011837: CreateIteminfoFromClipboard: Push: +92 to Accuracy Rating
+20230208011837: CreateIteminfoFromClipboard: Push: 
+20230208011837: MAIN: Crafting
+20230208011838: MAIN: Item Found.
+20230208011838: MAIN: ITERATING THROUGH ITEM LINES
+20230208011838: CraftItem: Clicked
+20230208011838: CreateIteminfoFromClipboard: Push:Freezing Onyx Amulet of Stinging
+20230208011838: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230208011838: CreateIteminfoFromClipboard: Push: Adds 9 to 16 Cold Damage to Attacks
+20230208011838: CreateIteminfoFromClipboard: Push: 15% increased Global Critical Strike Chance
+20230208011838: CreateIteminfoFromClipboard: Push: 
+20230208011838: MAIN: Crafting
+20230208011839: MAIN: Item Found.
+20230208011839: MAIN: ITERATING THROUGH ITEM LINES
+20230208011839: CraftItem: Clicked
+20230208011839: CreateIteminfoFromClipboard: Push:Magpie's Onyx Amulet
+20230208011839: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230208011839: CreateIteminfoFromClipboard: Push: 9% increased Rarity of Items found
+20230208011839: CreateIteminfoFromClipboard: Push: 
+20230208011839: MAIN: Crafting
+20230208011840: MAIN: Item Found.
+20230208011840: MAIN: ITERATING THROUGH ITEM LINES
+20230208011840: CraftItem: Clicked
+20230208011840: CreateIteminfoFromClipboard: Push:Onyx Amulet of the Pupil
+20230208011840: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230208011840: CreateIteminfoFromClipboard: Push: +14 to Intelligence
+20230208011840: CreateIteminfoFromClipboard: Push: 
+20230208011840: MAIN: Crafting
+20230208011841: MAIN: Item Found.
+20230208011841: MAIN: ITERATING THROUGH ITEM LINES
+20230208011841: CraftItem: Clicked
+20230208011841: CreateIteminfoFromClipboard: Push:Dragon's Onyx Amulet
+20230208011841: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230208011841: CreateIteminfoFromClipboard: Push: 20% increased Rarity of Items found
+20230208011841: CreateIteminfoFromClipboard: Push: 
+20230208011841: MAIN: Crafting
+20230208011842: MAIN: Item Found.
+20230208011842: MAIN: ITERATING THROUGH ITEM LINES
+20230208011842: CraftItem: Clicked
+20230208011842: CreateIteminfoFromClipboard: Push:Onyx Amulet of the Thunderhead
+20230208011842: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230208011842: CreateIteminfoFromClipboard: Push: +29% to Lightning Resistance
+20230208011842: CreateIteminfoFromClipboard: Push: 
+20230208011842: MAIN: Crafting
+20230208011843: MAIN: Item Found.
+20230208011843: MAIN: ITERATING THROUGH ITEM LINES
+20230208011843: CraftItem: Clicked
+20230208011843: CreateIteminfoFromClipboard: Push:Cobalt Onyx Amulet
+20230208011843: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230208011843: CreateIteminfoFromClipboard: Push: +23 to maximum Mana
+20230208011843: CreateIteminfoFromClipboard: Push: 
+20230208011843: MAIN: Crafting
+20230208011843: MAIN: Item Found.
+20230208011843: MAIN: ITERATING THROUGH ITEM LINES
+20230208011844: CraftItem: Clicked
+20230208011844: CreateIteminfoFromClipboard: Push:Agile Onyx Amulet of Consumption
+20230208011844: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230208011844: CreateIteminfoFromClipboard: Push: 4% increased Evasion Rating
+20230208011844: CreateIteminfoFromClipboard: Push: Gain 5 Mana per Enemy Killed
+20230208011844: CreateIteminfoFromClipboard: Push: 
+20230208011844: MAIN: Crafting
+20230208011844: MAIN: Item Found.
+20230208011844: MAIN: ITERATING THROUGH ITEM LINES
+20230208011844: CraftItem: Clicked
+20230208011844: CreateIteminfoFromClipboard: Push:Strong-Willed Onyx Amulet
+20230208011844: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230208011844: CreateIteminfoFromClipboard: Push: 7% increased maximum Energy Shield
+20230208011844: CreateIteminfoFromClipboard: Push: 
+20230208011845: MAIN: Crafting
+20230208011845: MAIN: Item Found.
+20230208011845: MAIN: ITERATING THROUGH ITEM LINES
+20230208011845: CraftItem: Clicked
+20230208011845: CreateIteminfoFromClipboard: Push:Exalter's Onyx Amulet
+20230208011845: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230208011845: CreateIteminfoFromClipboard: Push: +1 to Level of all Skill Gems
+20230208011845: CreateIteminfoFromClipboard: Push: 
+20230208011846: MAIN: Crafting
+20230208011846: MAIN: Item Found.
+20230208011846: MAIN: ITERATING THROUGH ITEM LINES
+20230208011846: CraftItem: Clicked
+20230208011846: CreateIteminfoFromClipboard: Push:Exalter's Onyx Amulet
+20230208011846: CreateIteminfoFromClipboard: Push: +19 to all Attributes (implicit)
+20230208011846: CreateIteminfoFromClipboard: Push: +1 to Level of all Skill Gems
+20230208011846: CreateIteminfoFromClipboard: Push: 
+20230208011847: MAIN: Crafting
+20230208011847: MAIN: Item Found.
+20230208011847: MAIN: ITERATING THROUGH ITEM LINES
+20230208011847: Currency not found.
+20230208011847: GrabCurrency: Returning successfully
+20230208011848: ItemToClipboard: Clipboard is empty!
+20230208011848: MAIN: Crafting
+20230208011849: Item not found, looping again.
+20230208011849: ItemToClipboard: Clipboard is empty!
+20230208011850: MAIN: Crafting
+20230208011850: Item not found, looping again.

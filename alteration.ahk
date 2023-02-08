@@ -9,36 +9,8 @@ SetTitleMatchMode, 1 ; 1=exact, 2=contains, 3=regex
 CoordMode, Mouse, Client ; Mouse coordinates are based on the active window's client area.
 SetWorkingDir %A_ScriptDir% ; 
 Thread, Interrupt, 0  ; Interrupts the script if it takes longer than 0 seconds to run.
-
 ; script functions
 ; F1: craft items with orbs of alteration automatically in path of exile using AHK looking for a specific affix
-; F2: looks up Mouse position and pixelColor under the mouse
-
-
-F2::
-;this function will check the color of pixels nearby the cursor to determine if the cursor is over a currency
-;if it is, it will return the name of the currency, otherwise it will return "none"
-Gui, New,, CurrencyGUI
-Gui +AlwaysOnTop +MinSize200x200
-Gui, Add, Text, x+10 vGuiHead w200, Is It Blue?
-Gui, Add, Text, x+10 vMousePos w15, Mouse Position: NONE
-Gui, Add, Text, x+10 vMouseColor w15, Mouse Color: NONE
-Gui, Add, Text, x+10 vPosUp w15, Currency Color: NONE
-Gui, Show, x6000 y500
-
-
-Loop,
-	{
-		MouseGetPos, x, y
-		PixelGetColor, _mouseColor, x, y
-		PixelGetColor, _currencyColor, x+10, y+10
-		GuiControl, Text, MousePos, %x%, %y%
-		GuiControl, Text, MouseColor, %_mouseColor%
-		GuiControl, Text, PosUp,%_currencyColor%
-		Sleep, 100
-	}
-
-Return
 F1::
 	global logging:=1
 	global affix:="Life"
@@ -81,8 +53,8 @@ F1::
 		 {	
 			if (_currency_clicked == 0) 
 			{
-				GuiControl, Text, ActiveWindow, Path of Exile
-				GuiControl, Text, Status, Grabbing currency
+				GuiControl, Text, ActiveWindow, Path of Exile - MAIN
+				GuiControl, Text, Status, CURRENCY PROCESS
 				if (GrabCurrency(RandomVal(212, 245), RandomVal(510,550)))
 					_currency_clicked := 1
 				Sleep, 100
@@ -108,13 +80,9 @@ F1::
 					WriteLog("MAIN: Item Found.")
 					WriteLog("MAIN: ITERATING THROUGH ITEM LINES")
 				}
-				While(_item_iterator)
+				While(_CurrentItem.Length > 0)
 				{
-							if logging 
-							{
-								if (_item_line != "")
-									WriteLog("Item: " _item_line)
-							}
+					;iterate through item lines
 							_item_line := _CurrentItem.Pop()
 							if (_Item_line != "") 
 							{
@@ -122,30 +90,38 @@ F1::
 								{
 									WriteLog("MAIN: Item has affix, checking if it's the one we want.")
 								}
-								if (InStr(_item_line, affix, False))
-								{
-									if (logging)
+								
+								try {
+									if (InStr(_item_line, affix) != 0) 
 									{
-										WriteLog("MAIN: Item has the affix we want. We are Done!")
+										if logging
+										{
+											WriteLog("MAIN: Item has affix: " %_item_line%)
+										}
+										_item_iterator := 0
+										LoopSwitch := 0
+										break
 									}
-									;found affix, exit everything
-									LoopSwitch := 0
-									ExitApp
-								} 
-								else 
-								{
-									continue
+								}
+								catch e {
+									if logging
+										WriteLog("MAIN: Error: " e)
+									;something something error
 								}
 							} 
 							else 
 							{
-								WriteLog("MAIN: Item doesn't have the affix, continuing.")
+								;no affix found, continue
 								_item_iterator := 0
 							}
 				}
-				Sleep, 100
-				if logging {
-					WriteLog("MAIN: Crafting")
+
+				if (LoopSwitch == 0) {
+					;this really shouldn't be possible?
+					;maybe I misunderstand the timing of things
+					if logging
+						WriteLog("MAIN: Item has affix, breaking loop.")
+					break
 				}
 				_currency_clicked := CraftItem()
 				craft_number++
